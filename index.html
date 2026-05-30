@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+  Proyecto: Agenda de Contactos IA
+  Autor: Cline (ChatGPT)
+  Descripción: Aplicación CRUD de contactos con localStorage y Bootstrap 5.
+  Todos los archivos están en la raíz del proyecto.
+  Este archivo es el punto de entrada de la aplicación.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda de Contactos IA</title>
+  <!-- Bootstrap 5 CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUa6Y+Y+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t+6t..." crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+  <style>
+    /* Estilos rápidos para la barra de búsqueda */
+    #searchInput {
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4 text-center">Agenda de Contactos IA</h1>
+
+    <!-- Formulario de contacto -->
+    <div class="card mb-4">
+      <div class="card-header">Agregar / Editar Contacto</div>
+      <div class="card-body">
+        <form id="contactForm" novalidate>
+          <input type="hidden" id="contactId" />
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="phone" required />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="email" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="col-md-6">
+              <label for="category" class="form-label">Categoría</label>
+              <select class="form-select" id="category" required>
+                <option value="Trabajo">Trabajo</option>
+                <option value="Familia">Familia</option>
+                <option value="Amigos">Amigos</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar Contacto</button>
+          <button type="button" id="cancelEdit" class="btn btn-secondary d-none">Cancelar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Buscador y lista de contactos -->
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre..." />
+    </div>
+    <div id="contactsContainer" class="row"></div>
+  </div>
+  <!-- Bootstrap JS (opcional, para componentes interactivos) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/*
+ * Estilos personalizados para la Agenda de Contactos IA.
+ * Se complementan con Bootstrap 5 para mantener un diseño limpio y responsive.
+ */
+
+/* Tarjeta de contacto */
+.contact-card {
+  margin-bottom: 1rem;
+}
+
+.contact-card .card-body {
+  padding: 0.75rem;
+}
+
+/* Botones de acción */
+.action-btn {
+  margin-right: 0.5rem;
+}
+
+/* Mensaje de vacío */
+.empty-message {
+  text-align: center;
+  color: #6c757d;
+}
